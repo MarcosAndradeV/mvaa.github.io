@@ -1,0 +1,114 @@
+/* Importando uma fonte moderna */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
+
+:root {
+    --primary-color: #1a2b3c; /* Azul marinho da logo */
+    --text-color: #2d3436;
+    --bg-color: #fafafa;
+    --accent-color: #636e72;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    text-align: center;
+}
+
+/* Estilização da Logo (Botão) */
+.logo {
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    background-image: url('assets/mvaa_icon.png');
+    background-size: cover;
+    border: 2px solid #eee;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.logo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+/* Título WIP */
+#title a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+}
+
+/* Texto de Introdução */
+p {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--accent-color);
+    max-width: 500px;
+    line-height: 1.6;
+    margin-top: 0;
+}
+
+/* Pequena animação de entrada */
+body > * {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Container dos Links */
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Estilo Individual dos Links */
+.link-item {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    font-weight: 400;
+    padding: 8px 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    background-color: transparent;
+}
+
+/* Efeito Hover nos Links */
+.link-item:hover {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(26, 43, 60, 0.2);
+}
+
+small {
+    position: relative;
+    margin-top: 4rem;
+    display: block;
+    position: absolute;
+    bottom: 2rem;
+    font-size: 0.8rem;
+    color: #b2bec3;
+    letter-spacing: 1px;
+}
