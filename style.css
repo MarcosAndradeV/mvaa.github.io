@@ -6,6 +6,23 @@
     --text-color: #2d3436;
     --bg-color: #fafafa;
     --accent-color: #636e72;
+    --border-color: #e0e0e0;
+    --footer-color: #b2bec3;
+    --logo-bg: white;
+    --logo-border: #eee;
+    --link-hover-shadow: rgba(26, 43, 60, 0.2);
+}
+
+html.dark-mode {
+    --primary-color: #e8f4f8; /* Luz na dark mode */
+    --text-color: #e0e0e0;
+    --bg-color: #0f1419;
+    --accent-color: #b0b0b0;
+    --border-color: #333333;
+    --footer-color: #666666;
+    --logo-bg: #1a2332;
+    --logo-border: #333333;
+    --link-hover-shadow: rgba(232, 244, 248, 0.2);
 }
 
 body {
@@ -21,19 +38,46 @@ body {
     text-align: center;
 }
 
+/* Dark Mode Toggle Button */
+.theme-toggle {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 1000;
+}
+
+.theme-button {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    background-color: var(--border-color);
+}
+
+.theme-button:hover {
+    transform: scale(1.1);
+    background-color: var(--accent-color);
+}
+
 /* Estilização da Logo (Botão) */
 .logo {
     width: 80px;
     height: 80px;
-    background-color: white;
+    background-color: var(--logo-bg);
     background-image: url('assets/mvaa_icon.png');
     background-size: cover;
-    border: 2px solid #eee;
+    border: 2px solid var(--logo-border);
     border-radius: 50%;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     margin-bottom: 2rem;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 15px var(--link-hover-shadow);
 }
 
 .logo:hover {
@@ -60,7 +104,7 @@ p {
     line-height: 1.6;
     margin-top: 0;
 }
-
+var(--border-color)
 /* Pequena animação de entrada */
 body > * {
     animation: fadeIn 1s ease-in-out;
@@ -96,10 +140,10 @@ body > * {
 /* Efeito Hover nos Links */
 .link-item:hover {
     background-color: var(--primary-color);
-    color: white;
+    color: var(--bg-color);
     border-color: var(--primary-color);
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(26, 43, 60, 0.2);
+    box-shadow: 0 4px 10px var(--link-hover-shadow);
 }
 
 small {
@@ -109,6 +153,11 @@ small {
     position: absolute;
     bottom: 2rem;
     font-size: 0.8rem;
-    color: #b2bec3;
+    color: var(--footer-color);
     letter-spacing: 1px;
+}
+
+/* Smooth transitions for theme switching */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }

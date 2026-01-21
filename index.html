@@ -13,12 +13,15 @@
     <meta property="og:image" content="https://mvaa.github.io/mvaa_icon.png" />
 </head>
 <body>
+    <div class="theme-toggle">
+        <button id="dark-mode-toggle" class="theme-button" title="Toggle dark mode">🌙</button>
+    </div>
 
     <button class="logo" onclick="location.reload()"></button>
 
     <!--<h1 id="title"><a href="#title">WIP</a></h1>-->
 
-    <p>Hi! My name is <strong>Marcos Vinicius Andrade Almeida</strong>.</p>
+    <p id="greeting">Hi! My name is <strong>Marcos Vinicius Andrade Almeida</strong>.</p>
 
     <div class="social-links">
         <a href="https://github.com/MarcosAndradeV" target="_blank" class="link-item">GitHub</a>
@@ -29,5 +32,54 @@
 
     <small>&copy; 2026 Marcos Vinicius Andrade Almeida</small>
 
+    <script>
+        // Language detection and translation
+        const translations = {
+            'pt-BR': 'Oi! Meu nome é <strong>Marcos Vinicius Andrade Almeida</strong>.',
+            'pt': 'Oi! Meu nome é <strong>Marcos Vinicius Andrade Almeida</strong>.',
+            'en': 'Hi! My name is <strong>Marcos Vinicius Andrade Almeida</strong>.',
+            'en-US': 'Hi! My name is <strong>Marcos Vinicius Andrade Almeida</strong>.',
+            'en-GB': 'Hi! My name is <strong>Marcos Vinicius Andrade Almeida</strong>.',
+            'es': 'Hola! Mi nombre es <strong>Marcos Vinicius Andrade Almeida</strong>.',
+            'es-ES': 'Hola! Mi nombre es <strong>Marcos Vinicius Andrade Almeida</strong>.',
+            'fr': 'Salut! Mon nom est <strong>Marcos Vinicius Andrade Almeida</strong>.',
+            'fr-FR': 'Salut! Mon nom est <strong>Marcos Vinicius Andrade Almeida</strong>.',
+            'de': 'Hallo! Mein Name ist <strong>Marcos Vinicius Andrade Almeida</strong>.',
+            'de-DE': 'Hallo! Mein Name ist <strong>Marcos Vinicius Andrade Almeida</strong>.',
+            'ja': 'こんにちは！私の名前はマルコス・ビニシウス・アンドラーデ・アルメイダです。',
+            'zh': '你好！我的名字是<strong>Marcos Vinicius Andrade Almeida</strong>。',
+            'zh-CN': '你好！我的名字是<strong>Marcos Vinicius Andrade Almeida</strong>。',
+            'it': 'Ciao! Il mio nome è <strong>Marcos Vinicius Andrade Almeida</strong>.',
+            'it-IT': 'Ciao! Il mio nome è <strong>Marcos Vinicius Andrade Almeida</strong>.',
+            'ko': '안녕하세요! 제 이름은 <strong>Marcos Vinicius Andrade Almeida</strong>입니다.',
+        };
+
+        // Get user's language
+        const userLanguage = navigator.language || navigator.userLanguage;
+        const greeting = document.getElementById('greeting');
+        const translatedText = translations[userLanguage] || translations[userLanguage.split('-')[0]] || translations['en'];
+        greeting.innerHTML = translatedText;
+
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const html = document.documentElement;
+        
+        // Check for saved preference or system preference
+        const isDarkMode = localStorage.getItem('dark-mode') === 'true' || 
+                          (window.matchMedia('(prefers-color-scheme: dark)').matches && localStorage.getItem('dark-mode') !== 'false');
+        
+        if (isDarkMode) {
+            html.classList.add('dark-mode');
+            darkModeToggle.textContent = '☀️';
+        }
+        
+        // Toggle dark mode
+        darkModeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark-mode');
+            const isDark = html.classList.contains('dark-mode');
+            localStorage.setItem('dark-mode', isDark);
+            darkModeToggle.textContent = isDark ? '☀️' : '🌙';
+        });
+    </script>
 </body>
 </html>
